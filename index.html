@@ -1,27 +1,186 @@
 <!DOCTYPE html>
 <html lang="ja">
-
 <head>
-
 <meta charset="UTF-8">
-
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>みんなの謎写真館</title>
 
-<link rel="stylesheet"
-href="style.css">
+<style>
+
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
+}
+
+body{
+
+background:#f4f4f4;
+
+font-family:-apple-system,BlinkMacSystemFont,sans-serif;
+
+}
+
+header{
+
+background:#ffffff;
+
+padding:20px;
+
+text-align:center;
+
+font-size:30px;
+
+font-weight:bold;
+
+box-shadow:0 2px 8px rgba(0,0,0,.08);
+
+}
+
+.catch{
+
+text-align:center;
+
+padding:25px;
+
+font-size:18px;
+
+line-height:1.8;
+
+}
+
+.menu{
+
+padding:15px;
+
+display:grid;
+
+gap:15px;
+
+}
+
+button{
+
+height:60px;
+
+font-size:18px;
+
+border:none;
+
+border-radius:15px;
+
+background:#4f8df7;
+
+color:white;
+
+font-weight:bold;
+
+}
+
+.gallery{
+
+padding:15px;
+
+display:grid;
+
+grid-template-columns:repeat(2,1fr);
+
+gap:10px;
+
+}
+
+.photo{
+
+aspect-ratio:1;
+
+background:white;
+
+border-radius:15px;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+font-size:40px;
+
+box-shadow:0 2px 6px rgba(0,0,0,.1);
+
+}
+
+footer{
+
+padding:25px;
+
+text-align:center;
+
+color:#888;
+
+font-size:13px;
+
+}
+
+</style>
 
 </head>
 
 <body>
 
-<h1>📷 みんなの謎写真館</h1>
+<header>
 
-<p>ようこそ！</p>
+📷<br>
 
-<script src="script.js"></script>
+みんなの謎写真館
+
+</header>
+
+<div class="catch">
+
+SNSに載せるほどじゃない。<br>
+
+でも誰かに見てもらいたい。<br><br>
+
+「なんでこれ撮ったんだろう？」
+
+そんな謎写真を集める場所。
+
+</div>
+
+<div class="menu">
+
+<button>📸 写真を投稿</button>
+
+<button>🎲 今日の謎写真占い</button>
+
+<button>🏆 ランキング</button>
+
+</div>
+
+<div class="gallery">
+
+<div class="photo">📷</div>
+
+<div class="photo">📷</div>
+
+<div class="photo">📷</div>
+
+<div class="photo">📷</div>
+
+</div>
+
+<footer>
+
+© 2026 みんなの謎写真館
+
+</footer>
+
+<script>
+
+console.log("みんなの謎写真館");
+
+</script>
 
 </body>
 
