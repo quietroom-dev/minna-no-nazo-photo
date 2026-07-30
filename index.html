@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta name="viewport" content="width=device-width,initial-scale=1">
 
 <title>みんなの謎写真館</title>
 
 <style>
 
 *{
-box-sizing:border-box;
 margin:0;
 padding:0;
+box-sizing:border-box;
 }
 
 body{
@@ -20,11 +22,15 @@ background:#f4f4f4;
 
 font-family:-apple-system,BlinkMacSystemFont,sans-serif;
 
+color:#333;
+
+padding-bottom:90px;
+
 }
 
 header{
 
-background:#ffffff;
+background:white;
 
 padding:20px;
 
@@ -34,19 +40,19 @@ font-size:30px;
 
 font-weight:bold;
 
-box-shadow:0 2px 8px rgba(0,0,0,.08);
+box-shadow:0 2px 8px rgba(0,0,0,.1);
 
 }
 
 .catch{
 
+padding:20px;
+
 text-align:center;
 
-padding:25px;
-
-font-size:18px;
-
 line-height:1.8;
+
+font-size:17px;
 
 }
 
@@ -56,31 +62,41 @@ padding:15px;
 
 display:grid;
 
-gap:15px;
+gap:12px;
 
 }
 
-button{
+.menu button{
 
 height:60px;
-
-font-size:18px;
 
 border:none;
 
 border-radius:15px;
 
-background:#4f8df7;
+background:#4F8DF7;
 
 color:white;
+
+font-size:18px;
 
 font-weight:bold;
 
 }
 
-.gallery{
+section{
 
 padding:15px;
+
+}
+
+h2{
+
+margin-bottom:10px;
+
+}
+
+.gallery{
 
 display:grid;
 
@@ -92,9 +108,9 @@ gap:10px;
 
 .photo{
 
-aspect-ratio:1;
-
 background:white;
+
+aspect-ratio:1;
 
 border-radius:15px;
 
@@ -106,19 +122,83 @@ justify-content:center;
 
 font-size:40px;
 
-box-shadow:0 2px 6px rgba(0,0,0,.1);
+box-shadow:0 2px 6px rgba(0,0,0,.08);
+
+transition:.2s;
+
+}
+
+.photo:active{
+
+transform:scale(.95);
+
+}
+
+nav{
+
+position:fixed;
+
+bottom:0;
+
+left:0;
+
+width:100%;
+
+height:70px;
+
+background:white;
+
+display:grid;
+
+grid-template-columns:repeat(4,1fr);
+
+box-shadow:0 -2px 8px rgba(0,0,0,.1);
+
+}
+
+nav div{
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+font-size:28px;
 
 }
 
 footer{
 
-padding:25px;
-
 text-align:center;
 
-color:#888;
+padding:20px;
 
-font-size:13px;
+font-size:12px;
+
+color:#999;
+
+}
+
+.dark{
+
+background:#222;
+
+color:white;
+
+}
+
+.dark header{
+
+background:#333;
+
+color:white;
+
+}
+
+.dark .photo{
+
+background:#444;
 
 }
 
@@ -140,45 +220,113 @@ font-size:13px;
 
 SNSに載せるほどじゃない。<br>
 
-でも誰かに見てもらいたい。<br><br>
-
-「なんでこれ撮ったんだろう？」
-
-そんな謎写真を集める場所。
+でも誰かに見てもらいたい。
 
 </div>
 
 <div class="menu">
 
-<button>📸 写真を投稿</button>
+<button id="uploadBtn">
 
-<button>🎲 今日の謎写真占い</button>
+📸 写真を投稿
 
-<button>🏆 ランキング</button>
+</button>
+
+<button id="fortuneBtn">
+
+🎲 今日の謎写真占い
+
+</button>
+
+<button id="rankingBtn">
+
+🏆 ランキング
+
+</button>
 
 </div>
+
+<section>
+
+<h2>🔥 今日の人気</h2>
 
 <div class="gallery">
 
 <div class="photo">📷</div>
-
 <div class="photo">📷</div>
-
 <div class="photo">📷</div>
-
 <div class="photo">📷</div>
 
 </div>
 
+</section>
+
+<section>
+
+<h2>🆕 新着写真</h2>
+
+<div class="gallery">
+
+<div class="photo">📷</div>
+<div class="photo">📷</div>
+<div class="photo">📷</div>
+<div class="photo">📷</div>
+
+</div>
+
+</section>
+
 <footer>
 
-© 2026 みんなの謎写真館
+©2026 みんなの謎写真館
 
 </footer>
 
+<nav>
+
+<div>🏠</div>
+
+<div>➕</div>
+
+<div>🏆</div>
+
+<div>🎲</div>
+
+</nav>
+
 <script>
 
-console.log("みんなの謎写真館");
+document
+.getElementById("fortuneBtn")
+.onclick=()=>{
+
+alert("第6章で作ります😊");
+
+}
+
+document
+.getElementById("rankingBtn")
+.onclick=()=>{
+
+alert("第5章で作ります😊");
+
+}
+
+document
+.getElementById("uploadBtn")
+.onclick=()=>{
+
+alert("第4章で写真投稿を作ります😊");
+
+}
+
+// ダークモード切替（今は動作確認用）
+let dark = false;
+
+document.querySelector("header").ondblclick = () => {
+  dark = !dark;
+  document.body.classList.toggle("dark", dark);
+};
 
 </script>
 
