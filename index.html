@@ -333,13 +333,46 @@ alert("第5章で作ります😊");
 
 }
 
+const photoInput =
+document.getElementById("photoInput");
+
 document
 .getElementById("uploadBtn")
 .onclick=()=>{
 
-alert("第4章で写真投稿を作ります😊");
+photoInput.click();
+
+};
+
+photoInput.onchange=(e)=>{
+
+const file=e.target.files[0];
+
+if(!file){
+
+return;
 
 }
+
+alert("選択した写真\n\n"+file.name);
+
+};
+
+document
+.getElementById("fortuneBtn")
+.onclick=()=>{
+
+alert("第8章で作ります");
+
+};
+
+document
+.getElementById("rankingBtn")
+.onclick=()=>{
+
+alert("第7章で作ります");
+
+};
 
 // ダークモード切替（今は動作確認用）
 let dark = false;
