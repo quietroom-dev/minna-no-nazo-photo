@@ -5,12 +5,22 @@ document.getElementById("uploadBtn").onclick = () => {
     photoInput.click();
 };
 
-photoInput.onchange = (e) => {
+photoInput.onchange = async (e) => {
+
     const file = e.target.files[0];
 
     if (!file) return;
 
-    alert("選択した写真\n\n" + file.name);
+    alert("アップロード準備開始");
+
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("upload_preset", UPLOAD_PRESET);
+
+    console.log(formData);
+
+    alert("ここまでは成功しました");
+
 };
 
 // ランキング
