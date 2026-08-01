@@ -121,36 +121,37 @@ document.getElementById("fortuneBtn").onclick = () => {
 };
 async function loadPhotos() {
 
-    const gallery = document.getElementById("photoGallery");
+    try {
 
-    gallery.innerHTML = "";
+        const gallery = document.getElementById("photoGallery");
 
-    const q = query(
-        collection(db, "photos"),
-        orderBy("createdAt", "desc")
-    );
+        gallery.innerHTML = "";
 
-    const snapshot = await getDocs(q);
+        const snapshot = await getDocs(collection(db, "photos"));
 
-    snapshot.forEach((doc) => {
+        snapshot.forEach((doc) => {
 
-        const photo = doc.data();
+            const photo = doc.data();
 
-        gallery.innerHTML += `
-            <div class="photo">
-                <img
-                    src="${photo.imageUrl}"
-                    style="
-                        width:100%;
-                        height:100%;
-                        object-fit:cover;
-                        border-radius:15px;
-                    ">
-            </div>
-        `;
+            gallery.innerHTML += `
+                <div class="photo">
+                    <img
+                        src="${photo.imageUrl}"
+                        style="
+                            width:100%;
+                            height:100%;
+                            object-fit:cover;
+                            border-radius:15px;
+                        ">
+                </div>
+            `;
 
-    });
+        });
+
+    } catch (e) {
+
+        alert(e.message);
+
+    }
 
 }
-
-loadPhotos();
