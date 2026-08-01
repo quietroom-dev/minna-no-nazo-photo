@@ -1,4 +1,24 @@
 // 写真を選択
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
+import {
+  getFirestore,
+  collection,
+  addDoc
+} from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyD2ByTKCiBZmCLqkXfGV49o-sh_OwCD2Mg",
+  authDomain: "minna-no-nazo-photo.firebaseapp.com",
+  projectId: "minna-no-nazo-photo",
+  storageBucket: "minna-no-nazo-photo.firebasestorage.app",
+  messagingSenderId: "598658120278",
+  appId: "1:598658120278:web:b83c7cd9363aa4f912d9f7"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+// 写真を選択
 const photoInput = document.getElementById("photoInput");
 
 document.getElementById("uploadBtn").onclick = () => {
