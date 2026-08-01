@@ -134,17 +134,62 @@ alert(snapshot.size + "件見つかりました");
             const photo = doc.data();
 
             gallery.innerHTML += `
-                <div class="photo">
-                    <img
-                        src="${photo.imageUrl}"
-                        style="
-                            width:100%;
-                            height:100%;
-                            object-fit:cover;
-                            border-radius:15px;
-                        ">
-                </div>
-            `;
+<div style="
+    background:white;
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 2px 6px rgba(0,0,0,.08);
+">
+
+    <img
+        src="${photo.imageUrl}"
+        style="
+            width:100%;
+            aspect-ratio:1;
+            object-fit:cover;
+            display:block;
+        ">
+
+    <div style="padding:10px;">
+
+        <div style="
+            min-height:40px;
+            margin-bottom:10px;
+            font-size:15px;
+        ">
+            ${photo.comment || ""}
+        </div>
+
+        <div style="
+            display:flex;
+            justify-content:space-between;
+            font-size:20px;
+        ">
+            <span>👍 ${photo.like}</span>
+            <span>😡 ${photo.angry}</span>
+        </div>
+
+        <div style="
+            display:flex;
+            justify-content:space-between;
+            margin-top:8px;
+            font-size:20px;
+        ">
+            <span>😢 ${photo.sad}</span>
+            <span>😆 ${photo.happy}</span>
+        </div>
+
+        <div style="
+            margin-top:8px;
+            font-size:20px;
+        ">
+            ❓ ${photo.mystery}
+        </div>
+
+    </div>
+
+</div>
+`;
 
         });
 
