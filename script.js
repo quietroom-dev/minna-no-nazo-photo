@@ -20,7 +20,7 @@ photoInput.onchange = async (e) => {
     console.log(formData);
 
     try {
-
+alert("Cloudinaryへ送信します");
     const response = await fetch(
         `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`,
         {
