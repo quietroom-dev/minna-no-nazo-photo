@@ -6,9 +6,11 @@ import {
   addDoc,
   getDocs,
   query,
-  orderBy
+  orderBy,
+  doc,
+  updateDoc,
+  increment
 } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
-
 const firebaseConfig = {
   apiKey: "AIzaSyD2ByTKCiBZmCLqkXfGV49o-sh_OwCD2Mg",
   authDomain: "minna-no-nazo-photo.firebaseapp.com",
@@ -129,12 +131,15 @@ alert("写真を読み込みます");
 
         const snapshot = await getDocs(collection(db, "photos"));
 alert(snapshot.size + "件見つかりました");
-        snapshot.forEach((doc) => {
+        snapshot.forEach((photoDoc) => {
 
-            const photo = doc.data();
+            const photo = photoDoc.data();
+const photoId = photoDoc.id;
 
             gallery.innerHTML += `
-<div style="
+<div
+onclick="toggleStampMenu('${photoId}')"
+style="
     background:white;
     border-radius:15px;
     overflow:hidden;
@@ -158,6 +163,19 @@ alert(snapshot.size + "件見つかりました");
             font-size:15px;
         ">
             ${photo.comment || ""}
+            <div
+id="stamp-${photoId}"
+style="
+display:none;
+padding:10px;
+border-top:1px solid #ddd;
+text-align:center;
+font-size:28px;
+">
+
+👍 😡 😢 😆 ❓
+
+</div>
         </div>
 
         <div style="
@@ -197,6 +215,17 @@ alert(snapshot.size + "件見つかりました");
 
         alert(e.message);
 
+    }
+
+}
+function toggleStampMenu(id){
+
+    const menu = document.getElementById("stamp-"+id);
+
+    if(menu.style.display==="block"){
+        menu.style.display="none";
+    }else{
+        menu.style.display="block";
     }
 
 }
