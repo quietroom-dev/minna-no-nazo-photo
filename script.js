@@ -19,7 +19,41 @@ photoInput.onchange = async (e) => {
 
     console.log(formData);
 
-    alert("ここまでは成功しました");
+    try {
+
+    const response = await fetch(
+        `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`,
+        {
+            method: "POST",
+            body: formData
+        }
+    );
+
+    const data = await response.json();
+
+    console.log(data);
+
+    if (data.secure_url) {
+
+        alert("アップロード成功！");
+
+        alert(data.secure_url);
+
+    } else {
+
+        alert("アップロード失敗");
+
+        console.log(data);
+
+    }
+
+} catch (err) {
+
+    console.error(err);
+
+    alert("通信エラー");
+
+}
 
 };
 
