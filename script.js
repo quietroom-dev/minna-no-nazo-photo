@@ -158,25 +158,12 @@ style="
     <div style="padding:10px;">
 
         <div style="
-            min-height:40px;
-            margin-bottom:10px;
-            font-size:15px;
-        ">
-            ${photo.comment || ""}
-            <div
-id="stamp-${photoId}"
-style="
-display:none;
-padding:10px;
-border-top:1px solid #ddd;
-text-align:center;
-font-size:28px;
+    min-height:40px;
+    margin-bottom:10px;
+    font-size:15px;
 ">
-
-👍 😡 😢 😆 ❓
-
+    ${photo.comment || ""}
 </div>
-        </div>
 
         <div style="
             display:flex;
@@ -203,6 +190,20 @@ font-size:28px;
         ">
             ❓ ${photo.mystery}
         </div>
+        <div
+id="stamp-${photoId}"
+style="
+display:none;
+padding:10px;
+margin-top:10px;
+border-top:1px solid #ddd;
+text-align:center;
+font-size:28px;
+">
+
+👍 😡 😢 😆 ❓
+
+</div>
 
     </div>
 
