@@ -50,8 +50,8 @@ photoInput.onchange = async (e) => {
 } catch (err) {
 
     console.error(err);
-
-    alert("通信エラー");
+alert("通信エラー");
+alert(err.message);
 
 }
 
