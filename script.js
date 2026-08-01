@@ -3,7 +3,10 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/fireba
 import {
   getFirestore,
   collection,
-  addDoc
+  addDoc,
+  getDocs,
+  query,
+  orderBy
 } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
 
 const firebaseConfig = {
@@ -116,3 +119,38 @@ document.getElementById("rankingBtn").onclick = () => {
 document.getElementById("fortuneBtn").onclick = () => {
     alert("今日の謎写真占いは後で作ります");
 };
+async function loadPhotos() {
+
+    const gallery = document.getElementById("photoGallery");
+
+    gallery.innerHTML = "";
+
+    const q = query(
+        collection(db, "photos"),
+        orderBy("createdAt", "desc")
+    );
+
+    const snapshot = await getDocs(q);
+
+    snapshot.forEach((doc) => {
+
+        const photo = doc.data();
+
+        gallery.innerHTML += `
+            <div class="photo">
+                <img
+                    src="${photo.imageUrl}"
+                    style="
+                        width:100%;
+                        height:100%;
+                        object-fit:cover;
+                        border-radius:15px;
+                    ">
+            </div>
+        `;
+
+    });
+
+}
+
+loadPhotos();
