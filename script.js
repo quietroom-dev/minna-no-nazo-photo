@@ -155,3 +155,6 @@ alert(snapshot.size + "件見つかりました");
     }
 
 }
+window.onload = () => {
+    loadPhotos();
+};
