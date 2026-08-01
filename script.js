@@ -55,11 +55,41 @@ alert("Cloudinaryへ送信します");
 
     if (data.secure_url) {
 
-        alert("アップロード成功！");
+    try {
 
-        alert(data.secure_url);
+        await addDoc(collection(db, "photos"), {
 
-    } else {
+            imageUrl: data.secure_url,
+
+            comment: document.getElementById("comment").value,
+
+            like: 0,
+
+            happy: 0,
+
+            sad: 0,
+
+            angry: 0,
+
+            mystery: 0,
+
+            createdAt: new Date()
+
+        });
+
+        alert("投稿が完了しました！");
+
+        document.getElementById("comment").value = "";
+
+    } catch (e) {
+
+        alert("Firestore保存エラー");
+
+        alert(e.message);
+
+    }
+
+} else {
 
         alert("アップロード失敗");
 
