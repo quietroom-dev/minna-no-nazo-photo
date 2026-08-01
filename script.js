@@ -120,7 +120,7 @@ document.getElementById("fortuneBtn").onclick = () => {
     alert("今日の謎写真占いは後で作ります");
 };
 async function loadPhotos() {
-
+alert("写真を読み込みます");
     try {
 
         const gallery = document.getElementById("photoGallery");
@@ -128,7 +128,7 @@ async function loadPhotos() {
         gallery.innerHTML = "";
 
         const snapshot = await getDocs(collection(db, "photos"));
-
+alert(snapshot.size + "件見つかりました");
         snapshot.forEach((doc) => {
 
             const photo = doc.data();
