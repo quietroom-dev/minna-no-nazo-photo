@@ -43,7 +43,7 @@ alert("Cloudinaryへ送信します");
 
         alert("アップロード失敗");
 
-        console.log(data);
+alert(JSON.stringify(data));
 
     }
 
