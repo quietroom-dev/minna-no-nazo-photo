@@ -234,6 +234,7 @@ function toggleStampMenu(id){
     }
 
 }
+window.toggleStampMenu = toggleStampMenu;
 async function pushStamp(photoId, type, emoji){
 
     const ref = doc(db, "photos", photoId);
@@ -249,6 +250,7 @@ async function pushStamp(photoId, type, emoji){
     loadPhotos();
 
 }
+window.pushStamp = pushStamp;
 function showToast(text){
 
     const toast = document.createElement("div");
