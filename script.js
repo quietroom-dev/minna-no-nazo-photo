@@ -197,7 +197,15 @@ text-align:center;
 font-size:28px;
 ">
 
-👍 😡 😢 😆 ❓
+<button onclick="event.stopPropagation();pushStamp('${photoId}','like')">👍</button>
+
+<button onclick="event.stopPropagation();alert('😡は次回実装')">😡</button>
+
+<button onclick="event.stopPropagation();alert('😢は次回実装')">😢</button>
+
+<button onclick="event.stopPropagation();alert('😆は次回実装')">😆</button>
+
+<button onclick="event.stopPropagation();alert('❓は次回実装')">❓</button>
 
 </div>
 
@@ -224,6 +232,21 @@ function toggleStampMenu(id){
     }else{
         menu.style.display="block";
     }
+
+}
+async function pushStamp(photoId, type){
+
+    const ref = doc(db,"photos",photoId);
+
+    await updateDoc(ref,{
+        [type]: increment(1)
+    });
+
+    alert("👍を押しました！");
+
+    toggleStampMenu(photoId);
+
+    loadPhotos();
 
 }
 window.onload = () => {
