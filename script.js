@@ -113,7 +113,7 @@ alert(err.message);
 
 // ランキング
 document.getElementById("rankingBtn").onclick = () => {
-    alert("ランキングは後で作ります");
+    showRanking();
 };
 
 // 占い
@@ -355,7 +355,77 @@ function closeFortune(){
     document.getElementById("fortuneModal").style.display="none";
 
 }
+async function showRanking(){
 
+    const snapshot = await getDocs(collection(db,"photos"));
+
+    const photos=[];
+
+    snapshot.forEach(doc=>{
+
+        const p=doc.data();
+
+        p.total=
+            p.like+
+            p.angry+
+            p.sad+
+            p.happy+
+            p.mystery;
+
+        photos.push(p);
+
+    });
+
+    photos.sort((a,b)=>b.total-a.total);
+
+    const list=document.getElementById("rankingList");
+
+    list.innerHTML="";
+
+    photos.forEach((photo,index)=>{
+
+        list.innerHTML+=`
+
+<div style="
+margin-top:15px;
+padding:10px;
+border:1px solid #ddd;
+border-radius:15px;
+">
+
+<div style="font-size:22px;font-weight:bold;">
+${index+1}位　🏆 ${photo.total}
+</div>
+
+<img
+src="${photo.imageUrl}"
+style="
+width:100%;
+margin-top:10px;
+border-radius:15px;
+">
+
+<div style="margin-top:10px;">
+${photo.comment || ""}
+</div>
+
+</div>
+
+`;
+
+    });
+
+    document.getElementById("rankingModal").style.display="flex";
+
+}
+
+function closeRanking(){
+
+    document.getElementById("rankingModal").style.display="none";
+
+}
+
+window.closeRanking=closeRanking;
 window.closeFortune = closeFortune;
 window.onload = () => {
 
