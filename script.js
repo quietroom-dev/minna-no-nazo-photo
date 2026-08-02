@@ -197,15 +197,15 @@ text-align:center;
 font-size:28px;
 ">
 
-<button onclick="event.stopPropagation();pushStamp('${photoId}','like')">👍</button>
+<button onclick="event.stopPropagation();pushStamp('${photoId}','like','👍')">👍</button>
 
-<button onclick="event.stopPropagation();alert('😡は次回実装')">😡</button>
+<button onclick="event.stopPropagation();pushStamp('${photoId}','angry','😡')">😡</button>
 
-<button onclick="event.stopPropagation();alert('😢は次回実装')">😢</button>
+<button onclick="event.stopPropagation();pushStamp('${photoId}','sad','😢')">😢</button>
 
-<button onclick="event.stopPropagation();alert('😆は次回実装')">😆</button>
+<button onclick="event.stopPropagation();pushStamp('${photoId}','happy','😆')">😆</button>
 
-<button onclick="event.stopPropagation();alert('❓は次回実装')">❓</button>
+<button onclick="event.stopPropagation();pushStamp('${photoId}','mystery','❓')">❓</button>
 
 </div>
 
@@ -234,19 +234,53 @@ function toggleStampMenu(id){
     }
 
 }
-async function pushStamp(photoId, type){
+async function pushStamp(photoId, type, emoji){
 
-    const ref = doc(db,"photos",photoId);
+    const ref = doc(db, "photos", photoId);
 
-    await updateDoc(ref,{
+    await updateDoc(ref, {
         [type]: increment(1)
     });
 
-    alert("👍を押しました！");
+    showToast(emoji + " を押しました！");
 
     toggleStampMenu(photoId);
 
     loadPhotos();
+
+}
+function showToast(text){
+
+    const toast = document.createElement("div");
+
+    toast.innerText = text;
+
+    toast.style.position = "fixed";
+    toast.style.bottom = "100px";
+    toast.style.left = "50%";
+    toast.style.transform = "translateX(-50%)";
+    toast.style.background = "#333";
+    toast.style.color = "white";
+    toast.style.padding = "12px 20px";
+    toast.style.borderRadius = "30px";
+    toast.style.fontSize = "18px";
+    toast.style.opacity = "0";
+    toast.style.transition = "0.3s";
+
+    document.body.appendChild(toast);
+
+    setTimeout(()=>{
+        toast.style.opacity="1";
+    },10);
+
+    setTimeout(()=>{
+        toast.style.opacity="0";
+
+        setTimeout(()=>{
+            toast.remove();
+        },300);
+
+    },1000);
 
 }
 window.onload = () => {
