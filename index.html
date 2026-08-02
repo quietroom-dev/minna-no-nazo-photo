@@ -304,7 +304,64 @@ resize:none;
 <div>🏆</div>
 
 <div>🎲</div>
+<div id="fortuneModal" style="
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.8);
+justify-content:center;
+align-items:center;
+z-index:999;
+">
 
+<div style="
+background:white;
+padding:20px;
+border-radius:20px;
+max-width:90%;
+">
+
+<h2 style="text-align:center;">
+🎲 今日の謎写真占い
+</h2>
+
+<img
+id="fortuneImage"
+style="
+width:100%;
+border-radius:15px;
+margin-top:15px;
+">
+
+<p
+id="fortuneComment"
+style="
+margin-top:15px;
+text-align:center;
+">
+</p>
+
+<button
+onclick="closeFortune()"
+style="
+width:100%;
+margin-top:20px;
+height:50px;
+border:none;
+border-radius:15px;
+background:#4F8DF7;
+color:white;
+font-size:18px;
+">
+閉じる
+</button>
+
+</div>
+
+</div>
 </nav>
 
 <script>
