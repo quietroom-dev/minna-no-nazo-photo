@@ -36,8 +36,6 @@ photoInput.onchange = async (e) => {
 
     if (!file) return;
 
-    alert("アップロード準備開始");
-
     const formData = new FormData();
     formData.append("file", file);
     formData.append("upload_preset", UPLOAD_PRESET);
@@ -45,7 +43,6 @@ photoInput.onchange = async (e) => {
     console.log(formData);
 
     try {
-alert("Cloudinaryへ送信します");
     const response = await fetch(
         `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`,
         {
@@ -85,6 +82,7 @@ alert("Cloudinaryへ送信します");
         alert("投稿が完了しました！");
 
         document.getElementById("comment").value = "";
+      loadPhotos();
 
     } catch (e) {
 
@@ -122,7 +120,6 @@ document.getElementById("fortuneBtn").onclick = () => {
     alert("今日の謎写真占いは後で作ります");
 };
 async function loadPhotos() {
-alert("写真を読み込みます");
     try {
 
         const gallery = document.getElementById("photoGallery");
@@ -130,7 +127,6 @@ alert("写真を読み込みます");
         gallery.innerHTML = "";
 
         const snapshot = await getDocs(collection(db, "photos"));
-alert(snapshot.size + "件見つかりました");
         snapshot.forEach((photoDoc) => {
 
             const photo = photoDoc.data();
