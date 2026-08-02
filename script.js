@@ -7,10 +7,11 @@ import {
   getDocs,
   query,
   orderBy,
+  limit,
   doc,
   updateDoc,
   increment
-} from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
+}from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
 const firebaseConfig = {
   apiKey: "AIzaSyD2ByTKCiBZmCLqkXfGV49o-sh_OwCD2Mg",
   authDomain: "minna-no-nazo-photo.firebaseapp.com",
