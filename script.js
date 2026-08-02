@@ -118,7 +118,7 @@ document.getElementById("rankingBtn").onclick = () => {
 
 // 占い
 document.getElementById("fortuneBtn").onclick = () => {
-    alert("今日の謎写真占いは後で作ります");
+    showFortune();
 };
 async function loadPhotos() {
     try {
@@ -321,6 +321,42 @@ async function loadPopular(){
     });
 
 }
+async function showFortune(){
+
+    const snapshot = await getDocs(collection(db,"photos"));
+
+    const photos = [];
+
+    snapshot.forEach(doc=>{
+        photos.push(doc.data());
+    });
+
+    if(photos.length===0){
+
+        showToast("写真がありません");
+
+        return;
+
+    }
+
+    const photo = photos[Math.floor(Math.random()*photos.length)];
+
+    document.getElementById("fortuneImage").src = photo.imageUrl;
+
+    document.getElementById("fortuneComment").innerText =
+        photo.comment || "コメントなし";
+
+    document.getElementById("fortuneModal").style.display="flex";
+
+}
+
+function closeFortune(){
+
+    document.getElementById("fortuneModal").style.display="none";
+
+}
+
+window.closeFortune = closeFortune;
 window.onload = () => {
 
     loadPhotos();
