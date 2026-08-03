@@ -524,18 +524,16 @@ async function deletePhoto(photoId){
 }
 
 window.deletePhoto = deletePhoto;
-window.onload = () => {
+window.onload = async () => {
 
-    signInAnonymously(auth);
+    await signInAnonymously(auth);
 
-    onAuthStateChanged(auth, async(user)=>{
+    while (!auth.currentUser) {
+        await new Promise(resolve => setTimeout(resolve, 100));
+    }
 
-        if(!user) return;
+    await deleteOldPhotos();
 
-        await deleteOldPhotos();
-
-        loadPhotos();
-
-    });
+    loadPhotos();
 
 };
