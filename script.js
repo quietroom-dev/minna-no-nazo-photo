@@ -1,3 +1,7 @@
+import {
+  getAuth,
+  signInAnonymously
+} from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
 // 写真を選択
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
 import {
@@ -23,7 +27,10 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
+
 const db = getFirestore(app);
+
+const auth = getAuth(app);
 
 // 写真を選択
 const photoInput = document.getElementById("photoInput");
@@ -66,6 +73,7 @@ photoInput.onchange = async (e) => {
             imageUrl: data.secure_url,
 
             comment: document.getElementById("comment").value,
+            userId: auth.currentUser.uid,
 
             like: 0,
 
@@ -138,6 +146,7 @@ async function loadPhotos() {
 
             const photo = photoDoc.data();
 const photoId = photoDoc.id;
+          const isMine = photo.userId === auth.currentUser.uid;
 
             gallery.innerHTML += `
 <div
@@ -235,7 +244,25 @@ onclick="event.stopPropagation();pushStamp('${photoId}','mystery','❓')">
 </button>
 
 </div>
+${isMine ? `
+<hr style="margin:10px 0;">
 
+<button
+onclick="event.stopPropagation();deletePhoto('${photoId}')"
+style="
+width:100%;
+height:42px;
+border:none;
+border-radius:10px;
+background:#ff4d4f;
+color:white;
+font-size:16px;
+">
+🗑️ この写真を削除
+</button>
+` : ""}
+
+</div>
     </div>
 
 </div>
@@ -484,7 +511,22 @@ async function deleteOldPhotos(){
     });
 
 }
-window.onload=async()=>{
+async function deletePhoto(photoId){
+
+    if(!confirm("この写真を削除しますか？")) return;
+
+    await deleteDoc(doc(db, "photos", photoId));
+
+    showToast("削除しました");
+
+    loadPhotos();
+
+}
+
+window.deletePhoto = deletePhoto;
+window.onload = async()=>{
+
+    await signInAnonymously(auth);
 
     await deleteOldPhotos();
 
