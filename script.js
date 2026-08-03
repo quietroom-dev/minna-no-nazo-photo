@@ -243,7 +243,6 @@ onclick="event.stopPropagation();pushStamp('${photoId}','mystery','❓')">
 ❓
 </button>
 
-</div>
 ${isMine ? `
 <hr style="margin:10px 0;">
 
@@ -261,7 +260,7 @@ font-size:16px;
 🗑️ この写真を削除
 </button>
 ` : ""}
-
+</div>
 </div>
     </div>
 
