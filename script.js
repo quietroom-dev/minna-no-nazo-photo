@@ -249,7 +249,6 @@ async function pushStamp(photoId, type, emoji){
     toggleStampMenu(photoId);
 
     loadPhotos();
-    loadPopular();
 
 }
 window.pushStamp = pushStamp;
@@ -430,7 +429,5 @@ window.closeFortune = closeFortune;
 window.onload = () => {
 
     loadPhotos();
-
-    loadPopular();
 
 };
