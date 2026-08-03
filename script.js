@@ -147,7 +147,9 @@ async function loadPhotos() {
 
             const photo = photoDoc.data();
 const photoId = photoDoc.id;
-          const isMine = photo.userId === auth.currentUser.uid;
+          const isMine =
+    auth.currentUser &&
+    photo.userId === auth.currentUser.uid;
 
             gallery.innerHTML += `
 <div
