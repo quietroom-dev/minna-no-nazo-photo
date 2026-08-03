@@ -348,7 +348,7 @@ async function showRanking(){
 
     list.innerHTML="";
 
-    photos.forEach((photo,index)=>{
+    photos.slice(0,5).forEach((photo,index)=>{
 
         list.innerHTML+=`
 
@@ -360,7 +360,21 @@ border-radius:15px;
 ">
 
 <div style="font-size:22px;font-weight:bold;">
-${index+1}位　🏆 ${photo.total}
+${
+index===0 ? "🥇 1位" :
+index===1 ? "🥈 2位" :
+index===2 ? "🥉 3位" :
+(index+1)+"位"
+}
+
+<div style="
+margin-top:5px;
+font-size:18px;
+font-weight:bold;
+color:#4F8DF7;
+">
+合計スタンプ　${photo.total}
+</div>
 </div>
 
 <img
@@ -373,6 +387,21 @@ border-radius:15px;
 
 <div style="margin-top:10px;">
 ${photo.comment || ""}
+<div style="
+margin-top:10px;
+font-size:18px;
+line-height:1.8;
+">
+
+👍 ${photo.like}
+　😆 ${photo.happy}
+
+😢 ${photo.sad}
+　😡 ${photo.angry}
+
+❓ ${photo.mystery}
+
+</div>
 </div>
 
 </div>
