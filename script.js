@@ -312,7 +312,13 @@ async function showFortune(){
     document.getElementById("fortuneComment").innerText =
         photo.comment || "コメントなし";
 
+    showToast("🔮 今日のラッキー謎写真を選んでいます…");
+
+setTimeout(()=>{
+
     document.getElementById("fortuneModal").style.display="flex";
+
+},800);
 
 }
 
