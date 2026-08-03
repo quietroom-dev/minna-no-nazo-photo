@@ -10,7 +10,8 @@ import {
   limit,
   doc,
   updateDoc,
-  increment
+  increment,
+  deleteDoc
 }from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
 const firebaseConfig = {
   apiKey: "AIzaSyD2ByTKCiBZmCLqkXfGV49o-sh_OwCD2Mg",
@@ -198,15 +199,70 @@ text-align:center;
 font-size:28px;
 ">
 
-<button onclick="event.stopPropagation();pushStamp('${photoId}','like','👍')">👍</button>
+<button
+style="
+width:48px;
+height:48px;
+border:none;
+border-radius:50%;
+font-size:24px;
+margin:5px;
+background:#f5f5f5;
+cursor:pointer;
+"
+onclick="event.stopPropagation();pushStamp('${photoId}','like','👍')">👍</button>
 
-<button onclick="event.stopPropagation();pushStamp('${photoId}','angry','😡')">😡</button>
+<button
+style="
+width:48px;
+height:48px;
+border:none;
+border-radius:50%;
+font-size:24px;
+margin:5px;
+background:#f5f5f5;
+cursor:pointer;
+"
+onclick="event.stopPropagation();pushStamp('${photoId}','angry','😡')">😡</button>
 
-<button onclick="event.stopPropagation();pushStamp('${photoId}','sad','😢')">😢</button>
+<button
+style="
+width:48px;
+height:48px;
+border:none;
+border-radius:50%;
+font-size:24px;
+margin:5px;
+background:#f5f5f5;
+cursor:pointer;
+"
+onclick="event.stopPropagation();pushStamp('${photoId}','sad','😢')">😢</button>
 
-<button onclick="event.stopPropagation();pushStamp('${photoId}','happy','😆')">😆</button>
+<button
+style="
+width:48px;
+height:48px;
+border:none;
+border-radius:50%;
+font-size:24px;
+margin:5px;
+background:#f5f5f5;
+cursor:pointer;
+"
+onclick="event.stopPropagation();pushStamp('${photoId}','happy','😆')">😆</button>
 
-<button onclick="event.stopPropagation();pushStamp('${photoId}','mystery','❓')">❓</button>
+<button
+style="
+width:48px;
+height:48px;
+border:none;
+border-radius:50%;
+font-size:24px;
+margin:5px;
+background:#f5f5f5;
+cursor:pointer;
+"
+onclick="event.stopPropagation();pushStamp('${photoId}','mystery','❓')">❓</button>
 
 </div>
 
@@ -310,7 +366,7 @@ async function showFortune(){
     document.getElementById("fortuneImage").src = photo.imageUrl;
 
     document.getElementById("fortuneComment").innerText =
-        photo.comment || "コメントなし";
+        photo.comment || "";
 
     showToast("🔮 今日のラッキー謎写真を選んでいます…");
 
@@ -329,7 +385,12 @@ function closeFortune(){
 }
 async function showRanking(){
 
-    const snapshot = await getDocs(collection(db,"photos"));
+    const snapshot = await getDocs(
+    query(
+        collection(db,"photos"),
+        orderBy("createdAt","desc")
+    )
+);
 
     const photos=[];
 
@@ -428,7 +489,34 @@ function closeRanking(){
 
 window.closeRanking=closeRanking;
 window.closeFortune = closeFortune;
-window.onload = () => {
+async function deleteOldPhotos(){
+
+    const snapshot = await getDocs(collection(db,"photos"));
+
+    const now = Date.now();
+
+    snapshot.forEach(async(photoDoc)=>{
+
+        const photo = photoDoc.data();
+
+        if(!photo.createdAt) return;
+
+        const created = photo.createdAt.toDate().getTime();
+
+        const days = (now-created)/(1000*60*60*24);
+
+        if(days>=30){
+
+            await deleteDoc(doc(db,"photos",photoDoc.id));
+
+        }
+
+    });
+
+}
+window.onload=async()=>{
+
+    await deleteOldPhotos();
 
     loadPhotos();
 
