@@ -286,40 +286,7 @@ function showToast(text){
     },1000);
 
 }
-async function loadPopular(){
 
-    const gallery = document.getElementById("popularGallery");
-
-    gallery.innerHTML = "";
-
-    const q = query(
-        collection(db,"photos"),
-        orderBy("like","desc"),
-        limit(4)
-    );
-
-    const snapshot = await getDocs(q);
-
-    snapshot.forEach(photoDoc=>{
-
-        const photo = photoDoc.data();
-
-        gallery.innerHTML += `
-        <div class="photo">
-            <img
-                src="${photo.imageUrl}"
-                style="
-                width:100%;
-                height:100%;
-                object-fit:cover;
-                border-radius:15px;
-                ">
-        </div>
-        `;
-
-    });
-
-}
 async function showFortune(){
 
     const snapshot = await getDocs(collection(db,"photos"));
