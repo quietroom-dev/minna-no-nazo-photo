@@ -1,6 +1,7 @@
 import {
   getAuth,
-  signInAnonymously
+  signInAnonymously,
+  onAuthStateChanged
 } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
 // 写真を選択
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
@@ -521,12 +522,18 @@ async function deletePhoto(photoId){
 }
 
 window.deletePhoto = deletePhoto;
-window.onload = async()=>{
+window.onload = () => {
 
-    await signInAnonymously(auth);
+    signInAnonymously(auth);
 
-    await deleteOldPhotos();
+    onAuthStateChanged(auth, async(user)=>{
 
-    loadPhotos();
+        if(!user) return;
+
+        await deleteOldPhotos();
+
+        loadPhotos();
+
+    });
 
 };
