@@ -205,111 +205,31 @@ font-size:28px;
 ">
 
 <button
-style="
-width:48px;
-height:48px;
-border:none;
-border-radius:50%;
-font-size:24px;
-margin:5px;
-background:#f5f5f5;
-box-shadow:0 2px 5px rgba(0,0,0,.15);
-transition:transform .12s;
-cursor:pointer;
-"
-onmousedown="this.style.transform='scale(.9)'"
-onmouseup="this.style.transform='scale(1)'"
-onmouseleave="this.style.transform='scale(1)'"
-ontouchstart="this.style.transform='scale(.9)'"
-ontouchend="this.style.transform='scale(1)'"
+class="stampBtn"
 onclick="event.stopPropagation();pushStamp('${photoId}','like','👍')">
 👍
 </button>
 
 <button
-style="
-width:48px;
-height:48px;
-border:none;
-border-radius:50%;
-font-size:24px;
-margin:5px;
-background:#f5f5f5;
-box-shadow:0 2px 5px rgba(0,0,0,.15);
-transition:transform .12s;
-cursor:pointer;
-"
-onmousedown="this.style.transform='scale(.9)'"
-onmouseup="this.style.transform='scale(1)'"
-onmouseleave="this.style.transform='scale(1)'"
-ontouchstart="this.style.transform='scale(.9)'"
-ontouchend="this.style.transform='scale(1)'"
+class="stampBtn"
 onclick="event.stopPropagation();pushStamp('${photoId}','angry','😡')">
 😡
 </button>
 
 <button
-style="
-width:48px;
-height:48px;
-border:none;
-border-radius:50%;
-font-size:24px;
-margin:5px;
-background:#f5f5f5;
-box-shadow:0 2px 5px rgba(0,0,0,.15);
-transition:transform .12s;
-cursor:pointer;
-"
-onmousedown="this.style.transform='scale(.9)'"
-onmouseup="this.style.transform='scale(1)'"
-onmouseleave="this.style.transform='scale(1)'"
-ontouchstart="this.style.transform='scale(.9)'"
-ontouchend="this.style.transform='scale(1)'"
+class="stampBtn"
 onclick="event.stopPropagation();pushStamp('${photoId}','sad','😢')">
 😢
 </button>
 
 <button
-style="
-width:48px;
-height:48px;
-border:none;
-border-radius:50%;
-font-size:24px;
-margin:5px;
-background:#f5f5f5;
-box-shadow:0 2px 5px rgba(0,0,0,.15);
-transition:transform .12s;
-cursor:pointer;
-"
-onmousedown="this.style.transform='scale(.9)'"
-onmouseup="this.style.transform='scale(1)'"
-onmouseleave="this.style.transform='scale(1)'"
-ontouchstart="this.style.transform='scale(.9)'"
-ontouchend="this.style.transform='scale(1)'"
+class="stampBtn"
 onclick="event.stopPropagation();pushStamp('${photoId}','happy','😆')">
 😆
 </button>
 
 <button
-style="
-width:48px;
-height:48px;
-border:none;
-border-radius:50%;
-font-size:24px;
-margin:5px;
-background:#f5f5f5;
-box-shadow:0 2px 5px rgba(0,0,0,.15);
-transition:transform .12s;
-cursor:pointer;
-"
-onmousedown="this.style.transform='scale(.9)'"
-onmouseup="this.style.transform='scale(1)'"
-onmouseleave="this.style.transform='scale(1)'"
-ontouchstart="this.style.transform='scale(.9)'"
-ontouchend="this.style.transform='scale(1)'"
+class="stampBtn"
 onclick="event.stopPropagation();pushStamp('${photoId}','mystery','❓')">
 ❓
 </button>
