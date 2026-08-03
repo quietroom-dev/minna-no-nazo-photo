@@ -128,7 +128,12 @@ async function loadPhotos() {
 
         gallery.innerHTML = "";
 
-        const snapshot = await getDocs(collection(db, "photos"));
+        const snapshot = await getDocs(
+    query(
+        collection(db, "photos"),
+        orderBy("createdAt", "desc")
+    )
+);
         snapshot.forEach((photoDoc) => {
 
             const photo = photoDoc.data();
@@ -208,9 +213,18 @@ border-radius:50%;
 font-size:24px;
 margin:5px;
 background:#f5f5f5;
+box-shadow:0 2px 5px rgba(0,0,0,.15);
+transition:transform .12s;
 cursor:pointer;
 "
-onclick="event.stopPropagation();pushStamp('${photoId}','like','👍')">👍</button>
+onmousedown="this.style.transform='scale(.9)'"
+onmouseup="this.style.transform='scale(1)'"
+onmouseleave="this.style.transform='scale(1)'"
+ontouchstart="this.style.transform='scale(.9)'"
+ontouchend="this.style.transform='scale(1)'"
+onclick="event.stopPropagation();pushStamp('${photoId}','like','👍')">
+👍
+</button>
 
 <button
 style="
@@ -221,9 +235,18 @@ border-radius:50%;
 font-size:24px;
 margin:5px;
 background:#f5f5f5;
+box-shadow:0 2px 5px rgba(0,0,0,.15);
+transition:transform .12s;
 cursor:pointer;
 "
-onclick="event.stopPropagation();pushStamp('${photoId}','angry','😡')">😡</button>
+onmousedown="this.style.transform='scale(.9)'"
+onmouseup="this.style.transform='scale(1)'"
+onmouseleave="this.style.transform='scale(1)'"
+ontouchstart="this.style.transform='scale(.9)'"
+ontouchend="this.style.transform='scale(1)'"
+onclick="event.stopPropagation();pushStamp('${photoId}','angry','😡')">
+😡
+</button>
 
 <button
 style="
@@ -234,9 +257,18 @@ border-radius:50%;
 font-size:24px;
 margin:5px;
 background:#f5f5f5;
+box-shadow:0 2px 5px rgba(0,0,0,.15);
+transition:transform .12s;
 cursor:pointer;
 "
-onclick="event.stopPropagation();pushStamp('${photoId}','sad','😢')">😢</button>
+onmousedown="this.style.transform='scale(.9)'"
+onmouseup="this.style.transform='scale(1)'"
+onmouseleave="this.style.transform='scale(1)'"
+ontouchstart="this.style.transform='scale(.9)'"
+ontouchend="this.style.transform='scale(1)'"
+onclick="event.stopPropagation();pushStamp('${photoId}','sad','😢')">
+😢
+</button>
 
 <button
 style="
@@ -247,9 +279,18 @@ border-radius:50%;
 font-size:24px;
 margin:5px;
 background:#f5f5f5;
+box-shadow:0 2px 5px rgba(0,0,0,.15);
+transition:transform .12s;
 cursor:pointer;
 "
-onclick="event.stopPropagation();pushStamp('${photoId}','happy','😆')">😆</button>
+onmousedown="this.style.transform='scale(.9)'"
+onmouseup="this.style.transform='scale(1)'"
+onmouseleave="this.style.transform='scale(1)'"
+ontouchstart="this.style.transform='scale(.9)'"
+ontouchend="this.style.transform='scale(1)'"
+onclick="event.stopPropagation();pushStamp('${photoId}','happy','😆')">
+😆
+</button>
 
 <button
 style="
@@ -260,9 +301,18 @@ border-radius:50%;
 font-size:24px;
 margin:5px;
 background:#f5f5f5;
+box-shadow:0 2px 5px rgba(0,0,0,.15);
+transition:transform .12s;
 cursor:pointer;
 "
-onclick="event.stopPropagation();pushStamp('${photoId}','mystery','❓')">❓</button>
+onmousedown="this.style.transform='scale(.9)'"
+onmouseup="this.style.transform='scale(1)'"
+onmouseleave="this.style.transform='scale(1)'"
+ontouchstart="this.style.transform='scale(.9)'"
+ontouchend="this.style.transform='scale(1)'"
+onclick="event.stopPropagation();pushStamp('${photoId}','mystery','❓')">
+❓
+</button>
 
 </div>
 
