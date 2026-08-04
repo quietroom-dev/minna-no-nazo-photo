@@ -272,6 +272,7 @@ font-size:16px;
 `;
 
         });
+      gallery.innerHTML = html;
 
     } catch (e) {
 
@@ -417,7 +418,6 @@ async function showRanking(){
         photos.push(p);
 
     });
-  gallery.innerHTML = html;
 
     photos.sort((a,b)=>b.total-a.total);
 
@@ -478,7 +478,6 @@ line-height:1.8;
 
 ❓ ${photo.mystery}
 
-</div>
 </div>
 </div>
 </div>
