@@ -135,7 +135,7 @@ async function loadPhotos() {
 
         const gallery = document.getElementById("photoGallery");
 
-        gallery.innerHTML = "";
+let html = "";
 
         const snapshot = await getDocs(
     query(
@@ -151,7 +151,7 @@ const photoId = photoDoc.id;
     auth.currentUser &&
     photo.userId === auth.currentUser.uid;
 
-            gallery.innerHTML += `
+            html += `
 <div
 onclick="toggleStampMenu('${photoId}')"
 style="
@@ -417,6 +417,7 @@ async function showRanking(){
         photos.push(p);
 
     });
+  gallery.innerHTML = html;
 
     photos.sort((a,b)=>b.total-a.total);
 
@@ -541,8 +542,6 @@ window.onload = async () => {
     try {
 
         const result = await signInAnonymously(auth);
-
-        alert("ログイン成功：" + result.user.uid);
 
         await deleteOldPhotos();
 
