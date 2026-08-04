@@ -526,14 +526,22 @@ async function deletePhoto(photoId){
 window.deletePhoto = deletePhoto;
 window.onload = async () => {
 
-    await signInAnonymously(auth);
+    try {
 
-    while (!auth.currentUser) {
-        await new Promise(resolve => setTimeout(resolve, 100));
+        const result = await signInAnonymously(auth);
+
+        alert("ログイン成功：" + result.user.uid);
+
+        await deleteOldPhotos();
+
+        loadPhotos();
+
+    } catch (e) {
+
+        alert("ログイン失敗");
+        alert(e.code);
+        alert(e.message);
+
     }
-
-    await deleteOldPhotos();
-
-    loadPhotos();
 
 };
