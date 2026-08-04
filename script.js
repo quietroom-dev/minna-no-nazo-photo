@@ -185,8 +185,8 @@ style="
             justify-content:space-between;
             font-size:20px;
         ">
-            <span>👍 ${photo.like}</span>
-            <span>😡 ${photo.angry}</span>
+            <span id="like-${photoId}">👍 ${photo.like}</span>
+            <span id="angry-${photoId}">😡 ${photo.angry}</span>
         </div>
 
         <div style="
@@ -195,15 +195,17 @@ style="
             margin-top:8px;
             font-size:20px;
         ">
-            <span>😢 ${photo.sad}</span>
-            <span>😆 ${photo.happy}</span>
+            <span id="sad-${photoId}">😢 ${photo.sad}</span>
+            <span id="happy-${photoId}">😆 ${photo.happy}</span>
         </div>
 
         <div style="
             margin-top:8px;
             font-size:20px;
         ">
-            ❓ ${photo.mystery}
+            <span id="mystery-${photoId}">
+❓ ${photo.mystery}
+</span>
         </div>
         <div
 id="stamp-${photoId}"
@@ -297,11 +299,20 @@ async function pushStamp(photoId, type, emoji){
         [type]: increment(1)
     });
 
+    const target = document.getElementById(type + "-" + photoId);
+
+    if(target){
+
+        const current =
+            parseInt(target.innerText.replace(/[^\d]/g,"")) + 1;
+
+        target.innerText = emoji + " " + current;
+
+    }
+
     showToast(emoji + " を押しました！");
 
     toggleStampMenu(photoId);
-
-    loadPhotos();
 
 }
 window.pushStamp = pushStamp;
