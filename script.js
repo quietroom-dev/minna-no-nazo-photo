@@ -478,7 +478,7 @@ line-height:1.8;
 
 </div>
 </div>
-
+</div>
 </div>
 
 `;
