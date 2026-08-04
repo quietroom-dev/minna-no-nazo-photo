@@ -268,7 +268,6 @@ font-size:16px;
 </div>
 </div>
 </div>
-</div>
 `;
 
         });
