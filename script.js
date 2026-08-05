@@ -73,7 +73,8 @@ photoInput.onchange = async (e) => {
 
             imageUrl: data.secure_url.replace(
   "/upload/",
-  "/upload/f_auto,q_auto,w_800/"
+  "/upload/f_auto,q_auto,w_1000/"
+),
 ),
 
             comment: document.getElementById("comment").value,
