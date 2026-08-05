@@ -71,7 +71,10 @@ photoInput.onchange = async (e) => {
 
         await addDoc(collection(db, "photos"), {
 
-            imageUrl: data.secure_url,
+            imageUrl: data.secure_url.replace(
+  "/upload/",
+  "/upload/f_auto,q_auto,w_800/"
+),
 
             comment: document.getElementById("comment").value,
             userId: auth.currentUser.uid,
