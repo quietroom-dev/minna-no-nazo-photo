@@ -75,7 +75,6 @@ photoInput.onchange = async (e) => {
   "/upload/",
   "/upload/f_auto,q_auto,w_1000/"
 ),
-),
 
             comment: document.getElementById("comment").value,
             userId: auth.currentUser.uid,
