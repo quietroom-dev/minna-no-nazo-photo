@@ -162,13 +162,14 @@ style="
 ">
 
     <img
-        src="${photo.imageUrl}"
-        style="
-            width:100%;
-            aspect-ratio:1;
-            object-fit:cover;
-            display:block;
-        ">
+    src="${photo.imageUrl}"
+    style="
+        width:100%;
+        max-height:300px;
+        object-fit:contain;
+        display:block;
+        background:#f4f4f4;
+    ">
 
     <div style="padding:10px;">
 
