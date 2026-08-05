@@ -385,7 +385,7 @@ async function showFortune(){
     document.getElementById("fortuneComment").innerText =
         photo.comment || "";
 
-    showToast("🔮 今のラッキー謎写真を選んでいます…");
+    showToast("🔮 今日のラッキー謎写真を選んでいます…");
 
 setTimeout(()=>{
 
@@ -482,11 +482,9 @@ line-height:1.8;
 ">
 
 👍 ${photo.like}
-　😆 ${photo.happy}
-
+😆 ${photo.happy}
 😢 ${photo.sad}
-　😡 ${photo.angry}
-
+😡 ${photo.angry}
 ❓ ${photo.mystery}
 
 </div>
