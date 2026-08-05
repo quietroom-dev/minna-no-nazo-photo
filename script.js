@@ -188,25 +188,25 @@ style="
 display:flex;
 justify-content:space-between;
 align-items:center;
-font-size:20px;
+font-size:10px;
 gap:4px;
 white-space:nowrap;
 ">
 
 <span id="like-${photoId}">
-👍 <small style="font-size:14px;">×${photo.like}</small>
+👍 <small style="font-size:10px;">×${photo.like}</small>
 </span>
 
 <span id="happy-${photoId}">
-😆 <small style="font-size:14px;">×${photo.happy}</small>
+😆 <small style="font-size:8px;">×${photo.happy}</small>
 </span>
 
 <span id="sad-${photoId}">
-😢 <small style="font-size:14px;">×${photo.sad}</small>
+😢 <small style="font-size:6px;">×${photo.sad}</small>
 </span>
 
 <span id="angry-${photoId}">
-😡 <small style="font-size:14px;">×${photo.angry}</small>
+😡 <small style="font-size:4px;">×${photo.angry}</small>
 </span>
 
 <span id="mystery-${photoId}">
