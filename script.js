@@ -188,7 +188,7 @@ style="
 display:flex;
 justify-content:space-between;
 align-items:center;
-font-size:10px;
+font-size:12px;
 gap:4px;
 white-space:nowrap;
 ">
