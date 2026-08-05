@@ -198,19 +198,19 @@ white-space:nowrap;
 </span>
 
 <span id="happy-${photoId}">
-😆 <small style="font-size:8px;">×${photo.happy}</small>
+😆 <small style="font-size:10px;">×${photo.happy}</small>
 </span>
 
 <span id="sad-${photoId}">
-😢 <small style="font-size:6px;">×${photo.sad}</small>
+😢 <small style="font-size:10px;">×${photo.sad}</small>
 </span>
 
 <span id="angry-${photoId}">
-😡 <small style="font-size:4px;">×${photo.angry}</small>
+😡 <small style="font-size:10px;">×${photo.angry}</small>
 </span>
 
 <span id="mystery-${photoId}">
-❓ <small style="font-size:14px;">×${photo.mystery}</small>
+❓ <small style="font-size:10px;">×${photo.mystery}</small>
 </span>
 
 </div>
