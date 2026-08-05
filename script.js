@@ -194,7 +194,7 @@ white-space:nowrap;
 ">
 
 <span id="like-${photoId}" style="white-space:nowrap;">
-👍 <small style="font-size:10px;">×${photo.like}</small>
+👍 <small style="font-size:5px;">×<small style="font-size:10px;">${photo.like}</small>
 </span>
 
 <span id="happy-${photoId}" style="white-space:nowrap;">
