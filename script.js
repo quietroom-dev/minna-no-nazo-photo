@@ -186,32 +186,35 @@ style="
 </div>
 
         <div style="
-            display:flex;
-            justify-content:space-between;
-            font-size:20px;
-        ">
-            <span id="like-${photoId}">👍 ${photo.like}</span>
-            <span id="angry-${photoId}">😡 ${photo.angry}</span>
-        </div>
+margin-top:10px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+font-size:24px;
+">
 
-        <div style="
-            display:flex;
-            justify-content:space-between;
-            margin-top:8px;
-            font-size:20px;
-        ">
-            <span id="sad-${photoId}">😢 ${photo.sad}</span>
-            <span id="happy-${photoId}">😆 ${photo.happy}</span>
-        </div>
-
-        <div style="
-            margin-top:8px;
-            font-size:20px;
-        ">
-            <span id="mystery-${photoId}">
-❓ ${photo.mystery}
+<span id="like-${photoId}">
+👍 <small style="font-size:14px;">×${photo.like}</small>
 </span>
-        </div>
+
+<span id="happy-${photoId}">
+😆 <small style="font-size:14px;">×${photo.happy}</small>
+</span>
+
+<span id="sad-${photoId}">
+😢 <small style="font-size:14px;">×${photo.sad}</small>
+</span>
+
+<span id="angry-${photoId}">
+😡 <small style="font-size:14px;">×${photo.angry}</small>
+</span>
+
+<span id="mystery-${photoId}">
+❓ <small style="font-size:14px;">×${photo.mystery}</small>
+</span>
+
+</div>
+
         <div
 id="stamp-${photoId}"
 style="
@@ -312,7 +315,8 @@ async function pushStamp(photoId, type, emoji){
         const current =
             parseInt(target.innerText.replace(/[^\d]/g,"")) + 1;
 
-        target.innerText = emoji + " " + current;
+        target.innerHTML =
+    `${emoji} <small style="font-size:14px;">×${current}</small>`;
 
     }
 
