@@ -185,11 +185,11 @@ style="
 </div>
 
         <div style="
-margin-top:10px;
 display:flex;
-justify-content:space-between;
+justify-content:space-around;
 align-items:center;
-font-size:24px;
+font-size:22px;
+white-space:nowrap;
 ">
 
 <span id="like-${photoId}">
@@ -465,8 +465,12 @@ color:#4F8DF7;
 src="${photo.imageUrl}"
 style="
 width:100%;
+max-height:300px;
+object-fit:contain;
+background:#f4f4f4;
 margin-top:10px;
 border-radius:15px;
+display:block;
 ">
 
 <div style="margin-top:10px;">
