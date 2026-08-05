@@ -178,7 +178,7 @@ style="
 
         <div style="
     min-height:40px;
-    margin-bottom:10px;
+    margin-bottom:4px;
     font-size:15px;
 ">
     ${photo.comment || ""}
@@ -186,9 +186,10 @@ style="
 
         <div style="
 display:flex;
-justify-content:space-around;
+justify-content:space-between;
 align-items:center;
-font-size:22px;
+font-size:20px;
+gap:4px;
 white-space:nowrap;
 ">
 
@@ -219,7 +220,7 @@ id="stamp-${photoId}"
 style="
 display:none;
 padding:10px;
-margin-top:10px;
+margin-top:4px;
 border-top:1px solid #ddd;
 text-align:center;
 font-size:28px;
