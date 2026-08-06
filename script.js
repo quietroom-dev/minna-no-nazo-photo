@@ -195,25 +195,34 @@ white-space:nowrap;
 
 <span id="like-${photoId}" style="white-space:nowrap;">
 <span style="font-size:12px;">👍</span>
-<small style="font-size:2px;">×</small>
-<span style="font-size:10px;">${photo.like}</span>
+<small style="font-size:5px;">×</small>
+<span style="font-size:8px;">${photo.like}</span>
 </span>
 
 <span id="happy-${photoId}" style="white-space:nowrap;">
-😆 <small style="font-size:10px;">×${photo.happy}</small>
+<span style="font-size:12px;">😆</span>
+<small style="font-size:5px;">×</small>
+<span style="font-size:8px;">${photo.happy}</span>
 </span>
 
 <span id="sad-${photoId}" style="white-space:nowrap;">
-😢 <small style="font-size:10px;">×${photo.sad}</small>
+<span style="font-size:12px;">😢</span>
+<small style="font-size:5px;">×</small>
+<span style="font-size:8px;">${photo.sad}</span>
 </span>
 
 <span id="angry-${photoId}" style="white-space:nowrap;">
-😡 <small style="font-size:10px;">×${photo.angry}</small>
+<span style="font-size:12px;">😡</span>
+<small style="font-size:5px;">×</small>
+<span style="font-size:8px;">${photo.angry}</span>
 </span>
 
 <span id="mystery-${photoId}" style="white-space:nowrap;">
-❓ <small style="font-size:10px;">×${photo.mystery}</small>
+<span style="font-size:12px;">❓</span>
+<small style="font-size:5px;">×</small>
+<span style="font-size:8px;">${photo.mystery}</span>
 </span>
+
 </div>
 
         <div
