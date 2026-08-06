@@ -387,7 +387,7 @@ async function showFortune(){
     document.getElementById("fortuneComment").innerText =
         photo.comment || "";
 
-    showToast("🔮 今のラッキー謎写真を選んでいます…");
+    showToast("🔮 今日のラッキー謎写真を選んでいます…");
 
 setTimeout(()=>{
 
