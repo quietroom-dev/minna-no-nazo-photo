@@ -194,33 +194,23 @@ white-space:nowrap;
 ">
 
 <span id="like-${photoId}" style="white-space:nowrap;">
-<span style="font-size:12px;">👍</span>
-<small style="font-size:6px;">×</small>
-<span style="font-size:10px;">${photo.like}</span>
+👍 <small style="font-size:5px;">×<small style="font-size:10px;">${photo.like}</small>
 </span>
 
 <span id="happy-${photoId}" style="white-space:nowrap;">
-<span style="font-size:12px;">😆</span>
-<small style="font-size:6px;">×</small>
-<span style="font-size:10px;">${photo.happy}</span>
+😆 <small style="font-size:10px;">×${photo.happy}</small>
 </span>
 
 <span id="sad-${photoId}" style="white-space:nowrap;">
-<span style="font-size:12px;">😢</span>
-<small style="font-size:6px;">×</small>
-<span style="font-size:10px;">${photo.sad}</span>
+😢 <small style="font-size:10px;">×${photo.sad}</small>
 </span>
 
 <span id="angry-${photoId}" style="white-space:nowrap;">
-<span style="font-size:12px;">😡</span>
-<small style="font-size:6px;">×</small>
-<span style="font-size:10px;">${photo.angry}</span>
+😡 <small style="font-size:10px;">×${photo.angry}</small>
 </span>
 
 <span id="mystery-${photoId}" style="white-space:nowrap;">
-<span style="font-size:12px;">❓</span>
-<small style="font-size:6px;">×</small>
-<span style="font-size:10px;">${photo.mystery}</span>
+❓ <small style="font-size:10px;">×${photo.mystery}</small>
 </span>
 </div>
 
@@ -325,7 +315,7 @@ async function pushStamp(photoId, type, emoji){
             parseInt(target.innerText.replace(/[^\d]/g,"")) + 1;
 
         target.innerHTML =
-`<span style="font-size:12px;">${emoji}</span><small style="font-size:6px;">×</small><span style="font-size:10px;">${current}</span>`;
+    `${emoji} <small style="font-size:14px;">×${current}</small>`;
 
     }
 
