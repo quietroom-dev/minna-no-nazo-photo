@@ -193,35 +193,11 @@ gap:4px;
 white-space:nowrap;
 ">
 
-<span id="like-${photoId}" style="white-space:nowrap;">
-<span style="font-size:10px;">👍</span>
-<small style="font-size:5px;">×</small>
-<span style="font-size:7px;">${photo.like}</span>
-</span>
-
-<span id="happy-${photoId}" style="white-space:nowrap;">
-<span style="font-size:10px;">😆</span>
-<small style="font-size:5px;">×</small>
-<span style="font-size:7px;">${photo.happy}</span>
-</span>
-
-<span id="sad-${photoId}" style="white-space:nowrap;">
-<span style="font-size:10px;">😢</span>
-<small style="font-size:5px;">×</small>
-<span style="font-size:7px;">${photo.sad}</span>
-</span>
-
-<span id="angry-${photoId}" style="white-space:nowrap;">
-<span style="font-size:10px;">😡</span>
-<small style="font-size:5px;">×</small>
-<span style="font-size:7px;">${photo.angry}</span>
-</span>
-
-<span id="mystery-${photoId}" style="white-space:nowrap;">
-<span style="font-size:10px;">❓</span>
-<small style="font-size:5px;">×</small>
-<span style="font-size:7px;">${photo.mystery}</span>
-</span>
+<span id="like-${photoId}" style="white-space:nowrap;"><span style="font-size:10px;">👍</span><small style="font-size:5px;">×</small><span style="font-size:7px;">${photo.like}</span></span>
+<span id="happy-${photoId}" style="white-space:nowrap;"><span style="font-size:10px;">😆</span><small style="font-size:5px;">×</small><span style="font-size:7px;">${photo.happy}</span></span>
+<span id="sad-${photoId}" style="white-space:nowrap;"><span style="font-size:10px;">😢</span><small style="font-size:5px;">×</small><span style="font-size:7px;">${photo.sad}</span></span>
+<span id="angry-${photoId}" style="white-space:nowrap;"><span style="font-size:10px;">😡</span><small style="font-size:5px;">×</small><span style="font-size:7px;">${photo.angry}</span></span>
+<span id="mystery-${photoId}" style="white-space:nowrap;"><span style="font-size:10px;">❓</span><small style="font-size:5px;">×</small><span style="font-size:7px;">${photo.mystery}</span></span>
 
 </div>
 
