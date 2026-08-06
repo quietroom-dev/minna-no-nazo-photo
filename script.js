@@ -194,33 +194,33 @@ white-space:nowrap;
 ">
 
 <span id="like-${photoId}" style="white-space:nowrap;">
-<span style="font-size:12px;">👍</span>
+<span style="font-size:10px;">👍</span>
 <small style="font-size:5px;">×</small>
-<span style="font-size:8px;">${photo.like}</span>
+<span style="font-size:7px;">${photo.like}</span>
 </span>
 
 <span id="happy-${photoId}" style="white-space:nowrap;">
-<span style="font-size:12px;">😆</span>
+<span style="font-size:10px;">😆</span>
 <small style="font-size:5px;">×</small>
-<span style="font-size:8px;">${photo.happy}</span>
+<span style="font-size:7px;">${photo.happy}</span>
 </span>
 
 <span id="sad-${photoId}" style="white-space:nowrap;">
-<span style="font-size:12px;">😢</span>
+<span style="font-size:10px;">😢</span>
 <small style="font-size:5px;">×</small>
-<span style="font-size:8px;">${photo.sad}</span>
+<span style="font-size:7px;">${photo.sad}</span>
 </span>
 
 <span id="angry-${photoId}" style="white-space:nowrap;">
-<span style="font-size:12px;">😡</span>
+<span style="font-size:10px;">😡</span>
 <small style="font-size:5px;">×</small>
-<span style="font-size:8px;">${photo.angry}</span>
+<span style="font-size:7px;">${photo.angry}</span>
 </span>
 
 <span id="mystery-${photoId}" style="white-space:nowrap;">
-<span style="font-size:12px;">❓</span>
+<span style="font-size:10px;">❓</span>
 <small style="font-size:5px;">×</small>
-<span style="font-size:8px;">${photo.mystery}</span>
+<span style="font-size:7px;">${photo.mystery}</span>
 </span>
 
 </div>
@@ -326,7 +326,7 @@ async function pushStamp(photoId, type, emoji){
             parseInt(target.innerText.replace(/[^\d]/g,"")) + 1;
 
         target.innerHTML =
-`<span style="font-size:12px;">${emoji}</span><small style="font-size:6px;">×</small><span style="font-size:10px;">${current}</span>`;
+`<span style="font-size:10px;">${emoji}</span><small style="font-size:5px;">×</small><span style="font-size:7px;">${current}</span>`;
 
     }
 
@@ -396,7 +396,7 @@ async function showFortune(){
     document.getElementById("fortuneComment").innerText =
         photo.comment || "";
 
-    showToast("🔮 今日のラッキー謎写真を選んでいます…");
+    showToast("🔮 今日のあなたのラッキー謎写真は…");
 
 setTimeout(()=>{
 
