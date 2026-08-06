@@ -194,7 +194,7 @@ white-space:nowrap;
 ">
 
 <span id="like-${photoId}" style="white-space:nowrap;">
-👍 <small style="font-size:5px;">×<small style="font-size:10px;">${photo.like}</small>
+👍 <small style="font-size:10px;">×${photo.like}</small>
 </span>
 
 <span id="happy-${photoId}" style="white-space:nowrap;">
@@ -385,7 +385,7 @@ async function showFortune(){
     document.getElementById("fortuneComment").innerText =
         photo.comment || "";
 
-    showToast("🔮 今日のラッキー謎写真を選んでいます…");
+    showToast("🔮 今のラッキー謎写真を選んでいます…");
 
 setTimeout(()=>{
 
@@ -482,9 +482,11 @@ line-height:1.8;
 ">
 
 👍 ${photo.like}
-😆 ${photo.happy}
+　😆 ${photo.happy}
+
 😢 ${photo.sad}
-😡 ${photo.angry}
+　😡 ${photo.angry}
+
 ❓ ${photo.mystery}
 
 </div>
