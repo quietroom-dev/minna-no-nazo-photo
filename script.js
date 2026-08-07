@@ -158,6 +158,7 @@ const photoId = photoDoc.id;
 <div
 onclick="toggleStampMenu('${photoId}')"
 style="
+    position:relative;
     background:white;
     border-radius:15px;
     overflow:hidden;
@@ -200,15 +201,25 @@ white-space:nowrap;
 
 </div>
 
-        <div
+<div
 id="stamp-${photoId}"
 style="
-display:none;
-padding:10px;
-margin-top:4px;
-border-top:1px solid #ddd;
+position:absolute;
+left:50%;
+top:50%;
+transform:translate(-50%,-50%) scale(.8);
+display:flex;
+gap:8px;
+padding:8px 12px;
+background:rgba(255,255,255,.95);
+border-radius:30px;
+box-shadow:0 4px 15px rgba(0,0,0,.25);
 text-align:center;
 font-size:28px;
+opacity:0;
+pointer-events:none;
+transition:opacity .2s ease, transform .2s ease;
+z-index:10;
 ">
 
 <button
@@ -277,10 +288,18 @@ function toggleStampMenu(id){
 
     const menu = document.getElementById("stamp-"+id);
 
-    if(menu.style.display==="block"){
-        menu.style.display="none";
+    if(menu.style.opacity === "1"){
+
+        menu.style.opacity = "0";
+        menu.style.transform = "translate(-50%,-50%) scale(.8)";
+        menu.style.pointerEvents = "none";
+
     }else{
-        menu.style.display="block";
+
+        menu.style.opacity = "1";
+        menu.style.transform = "translate(-50%,-50%) scale(1)";
+        menu.style.pointerEvents = "auto";
+
     }
 
 }
