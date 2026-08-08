@@ -212,7 +212,7 @@ display:flex;
 gap:8px;
 padding:8px 12px;
 text-align:center;
-font-size:28px;
+font-size:18px;
 opacity:0;
 pointer-events:none;
 transition:opacity .2s ease, transform .2s ease;
