@@ -314,16 +314,21 @@ function toggleStampMenu(id){
 
 }
 window.toggleStampMenu = toggleStampMenu;
+
 document.addEventListener("click", function(e) {
 
-    const openMenu = document.querySelector('[id^="stamp-"][style*="opacity: 1"]');
+    const openMenu = document.querySelector(
+        '[id^="stamp-"][style*="opacity: 1"]'
+    );
 
     if (!openMenu) return;
 
-    // スタンプ候補の中を押した場合は何もしない
-    if (openMenu.contains(e.target)) return;
+    // スタンプ候補の枠の中を押した場合
+    if (openMenu.contains(e.target)) {
+        return;
+    }
 
-    // スタンプ候補の外を押した場合だけ閉じる
+    // スタンプ候補の枠の外を押した場合
     openMenu.style.opacity = "0";
     openMenu.style.transform = "translate(-50%,-50%) scale(.8)";
     openMenu.style.pointerEvents = "none";
@@ -532,12 +537,16 @@ line-height:1.8;
 function closeRanking(){
 
     document.getElementById("rankingModal").style.display="none";
+
+}
+
 document.getElementById("rankingModal").addEventListener("click", function(e) {
+
     if (e.target === this) {
         closeRanking();
     }
+
 });
-}
 
 window.closeRanking=closeRanking;
 window.closeFortune = closeFortune;
