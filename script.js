@@ -314,7 +314,6 @@ function toggleStampMenu(id){
 
 }
 window.toggleStampMenu = toggleStampMenu;
-
 document.addEventListener("click", function(e) {
 
     const openMenu = document.querySelector(
@@ -323,12 +322,17 @@ document.addEventListener("click", function(e) {
 
     if (!openMenu) return;
 
-    // スタンプ候補の枠の中を押した場合
+    // スタンプ候補の枠の中なら閉じない
     if (openMenu.contains(e.target)) {
         return;
     }
 
-    // スタンプ候補の枠の外を押した場合
+    // 写真をタップした場合も、toggleStampMenuに任せる
+    if (e.target.closest('[onclick^="toggleStampMenu"]')) {
+        return;
+    }
+
+    // それ以外を押したら閉じる
     openMenu.style.opacity = "0";
     openMenu.style.transform = "translate(-50%,-50%) scale(.8)";
     openMenu.style.pointerEvents = "none";
