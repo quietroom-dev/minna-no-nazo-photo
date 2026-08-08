@@ -272,7 +272,7 @@ width:100%;
 height:42px;
 border:none;
 background:none;
-color:wblack;
+color:black;
 font-size:16px;
 ">
 🗑️ この写真を削除
