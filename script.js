@@ -320,7 +320,7 @@ async function pushStamp(photoId, type, emoji){
             parseInt(target.innerText.replace(/[^\d]/g,"")) + 1;
 
         target.innerHTML =
-`<span style="font-size:10px;">${emoji}</span><small style="font-size:5px;">×</small><span style="font-size:7px;">${current}</span>`;
+`<span style="font-size:12px;">${emoji}</span><small style="font-size:5px;">×</small><span style="font-size:9px;">${current}</span>`;
 
     }
 
