@@ -209,8 +209,10 @@ left:50%;
 top:50%;
 transform:translate(-50%,-50%) scale(.8);
 display:flex;
+flex-direction:column;
+align-items:center;
 gap:8px;
-padding:8px 12px;
+padding:12px;
 text-align:center;
 font-size:18px;
 opacity:0;
@@ -222,22 +224,16 @@ border-radius:30px;
 box-shadow:0 4px 15px rgba(0,0,0,.25);
 ">
 
+<div style="
+display:grid;
+grid-template-columns:repeat(2, 1fr);
+gap:8px 16px;
+">
+
 <button
 class="stampBtn"
 onclick="event.stopPropagation();pushStamp('${photoId}','like','👍')">
 👍
-</button>
-
-<button
-class="stampBtn"
-onclick="event.stopPropagation();pushStamp('${photoId}','angry','😡')">
-😡
-</button>
-
-<button
-class="stampBtn"
-onclick="event.stopPropagation();pushStamp('${photoId}','sad','😢')">
-😢
 </button>
 
 <button
@@ -248,12 +244,26 @@ onclick="event.stopPropagation();pushStamp('${photoId}','happy','😆')">
 
 <button
 class="stampBtn"
+onclick="event.stopPropagation();pushStamp('${photoId}','sad','😢')">
+😢
+</button>
+
+<button
+class="stampBtn"
+onclick="event.stopPropagation();pushStamp('${photoId}','angry','😡')">
+😡
+</button>
+
+<button
+class="stampBtn"
 onclick="event.stopPropagation();pushStamp('${photoId}','mystery','❓')">
 ❓
 </button>
 
+</div>
+
 ${isMine ? `
-<hr style="margin:10px 0;">
+<hr style="width:100%;margin:4px 0;">
 
 <button
 onclick="event.stopPropagation();deletePhoto('${photoId}')"
@@ -269,6 +279,7 @@ font-size:16px;
 🗑️ この写真を削除
 </button>
 ` : ""}
+
 </div>
 </div>
 </div>
