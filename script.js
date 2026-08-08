@@ -271,9 +271,8 @@ style="
 width:100%;
 height:42px;
 border:none;
-border-radius:10px;
-background:#ff4d4f;
-color:white;
+background:none;
+color:wblack;
 font-size:16px;
 ">
 🗑️ この写真を削除
