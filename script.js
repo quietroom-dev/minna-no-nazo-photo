@@ -46,7 +46,10 @@ photoInput.onchange = async (e) => {
 
     if (!file) return;
 
-    const formData = new FormData();
+// アップロード中を表示
+document.getElementById("uploadLoading").style.display = "block";
+
+const formData = new FormData();
     formData.append("file", file);
     formData.append("upload_preset", UPLOAD_PRESET);
 
@@ -93,9 +96,12 @@ photoInput.onchange = async (e) => {
 
         });
 
-        alert("投稿が完了しました！");
+        // アップロード中を非表示
+document.getElementById("uploadLoading").style.display = "none";
 
-        document.getElementById("comment").value = "";
+alert("投稿が完了しました！");
+
+document.getElementById("comment").value = "";
       loadPhotos();
 
     } catch (e) {
