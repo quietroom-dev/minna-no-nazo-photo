@@ -46,6 +46,9 @@ photoInput.onchange = async (e) => {
 
     if (!file) return;
 
+    // アップロード中を表示
+    document.getElementById("uploadLoading").style.display = "block";
+
     const formData = new FormData();
     formData.append("file", file);
     formData.append("upload_preset", UPLOAD_PRESET);
@@ -92,6 +95,7 @@ photoInput.onchange = async (e) => {
             createdAt: new Date()
 
         });
+      document.getElementById("uploadLoading").style.display = "none";
 
         alert("投稿が完了しました！");
 
@@ -115,7 +119,7 @@ alert(JSON.stringify(data));
     }
 
 } catch (err) {
-
+document.getElementById("uploadLoading").style.display = "none";
     console.error(err);
 alert("通信エラー");
 alert(err.message);
@@ -123,6 +127,24 @@ alert(err.message);
 }
 
 };
+<div id="uploadLoading"
+     style="
+       display:none;
+       position:fixed;
+       top:50%;
+       left:50%;
+       transform:translate(-50%,-50%);
+       background:rgba(0,0,0,.75);
+       color:white;
+       padding:20px 30px;
+       border-radius:15px;
+       font-size:18px;
+       z-index:9999;
+       text-align:center;
+     ">
+  📤 アップロード中…<br>
+  <span style="font-size:13px;">しばらくお待ちください</span>
+</div>
 
 // ランキング
 document.getElementById("rankingBtn").onclick = () => {
