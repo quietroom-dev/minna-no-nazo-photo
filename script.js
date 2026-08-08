@@ -217,6 +217,9 @@ opacity:0;
 pointer-events:none;
 transition:opacity .2s ease, transform .2s ease;
 z-index:10;
+background:rgba(255,255,255,.95);
+border-radius:30px;
+box-shadow:0 4px 15px rgba(0,0,0,.25);
 ">
 
 <button
