@@ -140,38 +140,56 @@ document.getElementById("fortuneBtn").onclick = () => {
     showFortune();
 };
 // このサイトを紹介
-document.getElementById("shareBtn").onclick = async () => {
+const shareBtn = document.getElementById("shareBtn");
 
-    const shareData = {
-        title: "謎写真館",
-        text: "どうして撮ったのか分からない、そんな謎の写真館です。",
-        url: window.location.href
-    };
+if (shareBtn) {
 
-    try {
+    shareBtn.onclick = async () => {
 
+        const url = window.location.href;
+
+        const shareData = {
+            title: "謎写真館",
+            text: "どうして撮ったのか分からない、そんな謎の写真館です。",
+            url: url
+        };
+
+        // スマホなどの共有機能が使える場合
         if (navigator.share) {
 
-            await navigator.share(shareData);
+            try {
 
-        } else {
+                await navigator.share(shareData);
 
-            await navigator.clipboard.writeText(window.location.href);
+            } catch (e) {
+
+                // 共有画面を閉じただけなら何もしない
+                if (e.name !== "AbortError") {
+                    showToast("共有できませんでした");
+                }
+
+            }
+
+            return;
+        }
+
+        // 共有機能がない場合
+        try {
+
+            await navigator.clipboard.writeText(url);
 
             showToast("サイトのURLをコピーしました！");
 
+        } catch (e) {
+
+            // コピーもできない環境ではURLを表示
+            prompt("このURLをコピーしてください", url);
+
         }
 
-    } catch (e) {
+    };
 
-        // 共有画面を閉じただけなら何もしない
-        if (e.name !== "AbortError") {
-            showToast("共有できませんでした");
-        }
-
-    }
-
-};
+}
 async function loadPhotos() {
     try {
 
