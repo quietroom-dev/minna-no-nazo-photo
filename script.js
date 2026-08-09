@@ -33,14 +33,7 @@ const db = getFirestore(app);
 
 const auth = getAuth(app);
 
-// 写真を選択
-const photoInput = document.getElementById("photoInput");
 
-document.getElementById("uploadBtn").onclick = () => {
-    photoInput.click();
-};
-
-// 写真を選択
 // 写真を選択・投稿
 
 const photoInput = document.getElementById("photoInput");
