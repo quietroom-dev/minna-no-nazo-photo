@@ -139,6 +139,39 @@ document.getElementById("rankingBtn").onclick = () => {
 document.getElementById("fortuneBtn").onclick = () => {
     showFortune();
 };
+// このサイトを紹介
+document.getElementById("shareBtn").onclick = async () => {
+
+    const shareData = {
+        title: "謎写真館",
+        text: "どうして撮ったのか分からない、そんな謎の写真館です。",
+        url: window.location.href
+    };
+
+    try {
+
+        if (navigator.share) {
+
+            await navigator.share(shareData);
+
+        } else {
+
+            await navigator.clipboard.writeText(window.location.href);
+
+            showToast("サイトのURLをコピーしました！");
+
+        }
+
+    } catch (e) {
+
+        // 共有画面を閉じただけなら何もしない
+        if (e.name !== "AbortError") {
+            showToast("共有できませんでした");
+        }
+
+    }
+
+};
 async function loadPhotos() {
     try {
 
