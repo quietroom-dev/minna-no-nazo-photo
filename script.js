@@ -40,46 +40,122 @@ document.getElementById("uploadBtn").onclick = () => {
     photoInput.click();
 };
 
-photoInput.onchange = async (e) => {
+// 写真を選択
+// 写真を選択・投稿
+
+const photoInput = document.getElementById("photoInput");
+const uploadBtn = document.getElementById("uploadBtn");
+const postBtn = document.getElementById("postBtn");
+const photoPreview = document.getElementById("photoPreview");
+const previewImage = document.getElementById("previewImage");
+
+let selectedFile = null;
+
+
+// ======================
+// 写真を選択
+// ======================
+
+uploadBtn.onclick = () => {
+
+    photoInput.click();
+
+};
+
+
+// ======================
+// 写真を選んだとき
+// ======================
+
+photoInput.onchange = (e) => {
 
     const file = e.target.files[0];
 
     if (!file) return;
 
-// アップロード中を表示
-document.getElementById("uploadLoading").style.display = "block";
+    selectedFile = file;
 
-const formData = new FormData();
-    formData.append("file", file);
+
+    // プレビュー表示
+    previewImage.src = URL.createObjectURL(file);
+
+    photoPreview.style.display = "block";
+
+
+    // 投稿ボタンを有効にする
+    postBtn.disabled = false;
+
+    postBtn.style.opacity = "1";
+
+};
+
+
+// ======================
+// 投稿する
+// ======================
+
+postBtn.onclick = async () => {
+
+    if (!selectedFile) {
+
+        showToast("先に写真を選択してください");
+
+        return;
+
+    }
+
+
+    // 投稿中表示
+    document.getElementById("uploadLoading").style.display = "block";
+
+
+    // 二重投稿防止
+    postBtn.disabled = true;
+    uploadBtn.disabled = true;
+
+
+    const formData = new FormData();
+
+    formData.append("file", selectedFile);
+
     formData.append("upload_preset", UPLOAD_PRESET);
 
-    console.log(formData);
 
     try {
-    const response = await fetch(
-        `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`,
-        {
-            method: "POST",
-            body: formData
+
+        // Cloudinaryへアップロード
+        const response = await fetch(
+            `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`,
+            {
+                method: "POST",
+                body: formData
+            }
+        );
+
+
+        const data = await response.json();
+
+
+        if (!data.secure_url) {
+
+            alert("アップロード失敗");
+            alert(JSON.stringify(data));
+
+            return;
+
         }
-    );
 
-    const data = await response.json();
 
-    console.log(data);
-
-    if (data.secure_url) {
-
-    try {
-
+        // Firestoreへ保存
         await addDoc(collection(db, "photos"), {
 
             imageUrl: data.secure_url.replace(
-  "/upload/",
-  "/upload/f_auto,q_auto,w_1000/"
-),
+                "/upload/",
+                "/upload/f_auto,q_auto,w_1000/"
+            ),
 
             comment: document.getElementById("comment").value,
+
             userId: auth.currentUser.uid,
 
             like: 0,
@@ -96,40 +172,65 @@ const formData = new FormData();
 
         });
 
-        // アップロード中を非表示
-document.getElementById("uploadLoading").style.display = "none";
 
-alert("投稿が完了しました！");
+        // 投稿完了
+        showToast("投稿が完了しました！");
 
-document.getElementById("comment").value = "";
-      loadPhotos();
 
-    } catch (e) {
+        // コメントを空にする
+        document.getElementById("comment").value = "";
 
-        alert("Firestore保存エラー");
 
-        alert(e.message);
+        // プレビューを消す
+        previewImage.src = "";
+
+        photoPreview.style.display = "none";
+
+
+        // 選択状態をリセット
+        selectedFile = null;
+
+        photoInput.value = "";
+
+
+        // 投稿ボタンを無効に戻す
+        postBtn.disabled = true;
+
+        postBtn.style.opacity = ".5";
+
+
+        // 写真一覧を更新
+        loadPhotos();
+
+
+    } catch (err) {
+
+        console.error(err);
+
+        alert("投稿に失敗しました");
+
+        alert(err.message);
+
+
+    } finally {
+
+        // 投稿中表示を消す
+        document.getElementById("uploadLoading").style.display = "none";
+
+
+        // 写真選択ボタンを戻す
+        uploadBtn.disabled = false;
+
+
+        // 投稿ボタンの状態を戻す
+        postBtn.disabled = !selectedFile;
+
+        postBtn.style.opacity =
+            selectedFile ? "1" : ".5";
 
     }
-
-} else {
-
-        alert("アップロード失敗");
-
-alert(JSON.stringify(data));
-
-    }
-
-} catch (err) {
-
-    console.error(err);
-alert("通信エラー");
-alert(err.message);
-
-}
 
 };
-
 // ランキング
 document.getElementById("rankingBtn").onclick = () => {
     showRanking();
